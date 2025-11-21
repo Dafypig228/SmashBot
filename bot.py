@@ -6,7 +6,7 @@ from aiogram.types import (
 )
 import asyncio
 
-TOKEN = "8599227027:AAHcXPhxGvv_1LWVZj7M5EHNjN9_YwOQ8ZI"
+TOKEN = "8599227027:AAHXMcycWYinV6UANIchdwJeGIqOOIFpj_I"
 BOT_USERNAME = "HowSmashBot"
 
 SECRET_WORD = "mypass"  # твое секретное слово
@@ -16,11 +16,6 @@ dp = Dispatcher()
 @dp.inline_query()
 async def inline(query: InlineQuery):
     text = query.query.strip()
-
-    # Проверка: если текст не начинается с секретного слова — возвращаем пустой ответ
-    if not text.startswith(SECRET_WORD):
-        await query.answer([], cache_time=0)
-        return
 
     try:
         number = int(text.split()[1])
@@ -32,7 +27,7 @@ async def inline(query: InlineQuery):
             [
                 InlineKeyboardButton(
                     text="Share your smashness!",
-                    switch_inline_query=""
+                    switch_inline_query=" "
                 )
             ]
         ]
